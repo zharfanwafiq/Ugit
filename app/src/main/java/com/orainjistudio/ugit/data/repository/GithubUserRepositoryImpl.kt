@@ -1,11 +1,9 @@
 package com.orainjistudio.ugit.data.repository
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import com.orainjistudio.ugit.data.api.ApiService
 import com.orainjistudio.ugit.data.response.detailuser.DetailUser
-import com.orainjistudio.ugit.data.response.detailuser.ListUser
 import com.orainjistudio.ugit.utils.AppExecutors
 import retrofit2.Call
 import retrofit2.Callback

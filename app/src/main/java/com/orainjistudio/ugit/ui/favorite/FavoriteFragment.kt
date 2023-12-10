@@ -11,30 +11,31 @@ import com.orainjistudio.ugit.databinding.FragmentFavoriteBinding
 
 class FavoriteFragment : Fragment() {
 
-private var _binding: FragmentFavoriteBinding? = null
-  // This property is only valid between onCreateView and
-  // onDestroyView.
-  private val binding get() = _binding!!
+    private var _binding: FragmentFavoriteBinding? = null
 
-  override fun onCreateView(
-    inflater: LayoutInflater,
-    container: ViewGroup?,
-    savedInstanceState: Bundle?
-  ): View {
-    val dashboardViewModel =
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        val dashboardViewModel =
             ViewModelProvider(this).get(FavoriteViewModel::class.java)
 
-      _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
-    val root: View = binding.root
+        _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
+        val root: View = binding.root
 
-    val textView: TextView = binding.textDashboard
-    dashboardViewModel.text.observe(viewLifecycleOwner) {
-      textView.text = it
+        val textView: TextView = binding.textDashboard
+        dashboardViewModel.text.observe(viewLifecycleOwner) {
+            textView.text = it
+        }
+        return root
     }
-    return root
-  }
 
-override fun onDestroyView() {
+    override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }

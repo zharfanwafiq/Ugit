@@ -11,30 +11,31 @@ import com.orainjistudio.ugit.databinding.FragmentAboutBinding
 
 class AboutFragment : Fragment() {
 
-private var _binding: FragmentAboutBinding? = null
-  // This property is only valid between onCreateView and
-  // onDestroyView.
-  private val binding get() = _binding!!
+    private var _binding: FragmentAboutBinding? = null
 
-  override fun onCreateView(
-    inflater: LayoutInflater,
-    container: ViewGroup?,
-    savedInstanceState: Bundle?
-  ): View {
-    val notificationsViewModel =
-            ViewModelProvider(this).get(AboutViewModel::class.java)
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
 
-    _binding = FragmentAboutBinding.inflate(inflater, container, false)
-    val root: View = binding.root
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        val notificationsViewModel =
+            ViewModelProvider(this)[AboutViewModel::class.java]
 
-    val textView: TextView = binding.textNotifications
-    notificationsViewModel.text.observe(viewLifecycleOwner) {
-      textView.text = it
+        _binding = FragmentAboutBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+
+        val textView: TextView = binding.textNotifications
+        notificationsViewModel.text.observe(viewLifecycleOwner) {
+            textView.text = it
+        }
+        return root
     }
-    return root
-  }
 
-override fun onDestroyView() {
+    override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
